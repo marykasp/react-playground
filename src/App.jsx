@@ -2,10 +2,12 @@ import React from "react";
 
 import Counter from "./playground/useState/Counter";
 import Test from "./playground/useState/Test";
+import MultiStepForm from "./playground/useState/MultiStepForm";
 
 const playgrounds = {
   "State Management": {
     "useState Counter": Counter,
+    "useState Multi-Step Form": MultiStepForm,
     "useState Test": Test,
   },
 };
