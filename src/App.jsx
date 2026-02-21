@@ -9,33 +9,47 @@ const playgrounds = {
 export default function App() {
   const [active, setActive] = React.useState("useState Counter");
   const ActiveComponent = playgrounds[active];
+
   return (
-    <div className="flex min-h-screen bg-gray-50 text-gray-800">
-      {/* Sidebar */}
-      <aside className="w-64 border-r bg-white p-6 shadow-sm">
-        <h1 className="text-xl font-bold mb-6">React Playground</h1>
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      {/* Header */}
+      <header className="sticky top-0 z-10 border-b border-slate-200 bg-white px-8 py-4">
+        <h1 className="text-xl font-semibold tracking-tight">
+          React Playground
+        </h1>
+        <p className="text-sm text-slate-500">
+          Experiments for mastering hooks and patterns
+        </p>
+      </header>
 
-        <nav className="flex flex-col gap-2">
-          {Object.keys(playgrounds).map((name) => (
-            <button
-              key={name}
-              onClick={() => setActive(name)}
-              className={`text-left px-3 py-2 rounded-lg transition 
-                ${
-                  active === name
-                    ? "bg-gray-200 font-semibold"
-                    : "hover:bg-gray-100"
-                }`}
-            >
-              {name}
-            </button>
-          ))}
-        </nav>
-      </aside>
+      <div className="flex h-screen">
+        {/* Sidebar */}
+        <aside className="w-64 border-r border-slate-200 bg-white p-6">
+          <nav className="space-y-1">
+            {Object.keys(playgrounds).map((name) => (
+              <button
+                key={name}
+                onClick={() => setActive(name)}
+                className={`w-full text-left px-3 py-2 rounded-md text-sm transition
+                  ${
+                    active === name
+                      ? "bg-sky-100 font-medium border-l-4 border-sky-800 pl-2"
+                      : "hover:bg-slate-100 text-slate-600"
+                  }`}
+              >
+                {name}
+              </button>
+            ))}
+          </nav>
+        </aside>
 
-      <main>
-        <ActiveComponent />
-      </main>
+        {/* Main Content */}
+        <main className="flex-1 p-10">
+          <div className="max-w-3xl bg-white p-8 rounded-lg shadow-sm border border-slate-200">
+            <ActiveComponent />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
