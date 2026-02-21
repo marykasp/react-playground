@@ -1,9 +1,8 @@
 import React from "react";
 
-import Counter from "./playground/useState/Counter";
-import Test from "./playground/useState/Test";
-import MultiStepForm from "./playground/useState/MultiStepForm";
-import { MultiStepForm as ReducerForm } from "./playground/useReducer/MultiStepForm";
+import Counter from "./playground/state/Counter";
+import MultiStepForm from "./playground/state/MultiStepForm";
+import { MultiStepForm as ReducerForm } from "./playground/reducer/MultiStepForm";
 
 const playgrounds = {
   "State Hooks": {

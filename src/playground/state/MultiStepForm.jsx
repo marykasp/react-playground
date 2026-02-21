@@ -172,7 +172,7 @@ const MultiStepForm = () => {
             })}
           </tbody>
         </table>
-        <div className="flex w-max gap-4">
+        <div className="flex w-max gap-4 my-2">
           <button
             type="submit"
             className="rounded-md bg-amber-500 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg"
