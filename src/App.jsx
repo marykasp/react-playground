@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Counter from "./playground/useState/Counter";
 
+const playgrounds = {
+  "useState Counter": Counter,
+};
+
+export default function App() {
+  const [active, setActive] = React.useState("useState Counter");
+  const ActiveComponent = playgrounds[active];
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="flex min-h-screen bg-gray-50 text-gray-800">
+      {/* Sidebar */}
+      <aside className="w-64 border-r bg-white p-6 shadow-sm">
+        <h1 className="text-xl font-bold mb-6">React Playground</h1>
 
-export default App
+        <nav className="flex flex-col gap-2">
+          {Object.keys(playgrounds).map((name) => (
+            <button
+              key={name}
+              onClick={() => setActive(name)}
+              className={`text-left px-3 py-2 rounded-lg transition 
+                ${
+                  active === name
+                    ? "bg-gray-200 font-semibold"
+                    : "hover:bg-gray-100"
+                }`}
+            >
+              {name}
+            </button>
+          ))}
+        </nav>
+      </aside>
+
+      <main>
+        <ActiveComponent />
+      </main>
+    </div>
+  );
+}
