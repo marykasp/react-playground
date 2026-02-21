@@ -1,14 +1,25 @@
 import React from "react";
 
 import Counter from "./playground/useState/Counter";
+import Test from "./playground/useState/Test";
 
 const playgrounds = {
-  "useState Counter": Counter,
+  "State Management": {
+    "useState Counter": Counter,
+    "useState Test": Test,
+  },
 };
 
 export default function App() {
   const [active, setActive] = React.useState("useState Counter");
-  const ActiveComponent = playgrounds[active];
+
+  // Find active component
+  let ActiveComponent = null;
+  Object.values(playgrounds).forEach((group) => {
+    if (group[active]) {
+      ActiveComponent = group[active];
+    }
+  });
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
@@ -26,19 +37,29 @@ export default function App() {
         {/* Sidebar */}
         <aside className="w-64 border-r border-slate-200 bg-white p-6">
           <nav className="space-y-1">
-            {Object.keys(playgrounds).map((name) => (
-              <button
-                key={name}
-                onClick={() => setActive(name)}
-                className={`w-full text-left px-3 py-2 rounded-md text-sm transition
-                  ${
-                    active === name
-                      ? "bg-sky-100 font-medium border-l-4 border-sky-800 pl-2"
-                      : "hover:bg-slate-100 text-slate-600"
-                  }`}
-              >
-                {name}
-              </button>
+            {Object.entries(playgrounds).map(([section, items]) => (
+              <div key={section}>
+                <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  {section}
+                </h2>
+
+                <div className="space-y-1">
+                  {Object.keys(items).map((name) => (
+                    <button
+                      key={name}
+                      onClick={() => setActive(name)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition
+                        ${
+                          active === name
+                            ? "bg-slate-100 font-medium border-l-4 border-slate-800 pl-2"
+                            : "hover:bg-slate-100 text-slate-600"
+                        }`}
+                    >
+                      {name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </nav>
         </aside>
@@ -50,7 +71,8 @@ export default function App() {
             <p className="text-sm text-slate-500 mb-6">
               Demonstration of this hook pattern in isolation.
             </p>
-            <ActiveComponent />
+
+            {ActiveComponent && <ActiveComponent />}
           </div>
         </main>
       </div>
