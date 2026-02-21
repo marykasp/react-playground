@@ -46,6 +46,10 @@ export default function App() {
         {/* Main Content */}
         <main className="flex-1 p-10">
           <div className="max-w-3xl bg-white p-8 rounded-lg shadow-sm border border-slate-200">
+            <h2 className="text-2xl font-semibold mb-2">{active}</h2>
+            <p className="text-sm text-slate-500 mb-6">
+              Demonstration of this hook pattern in isolation.
+            </p>
             <ActiveComponent />
           </div>
         </main>
