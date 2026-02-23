@@ -12,7 +12,7 @@ const TaskFilter = () => {
     <div>
       {filters.map((f) => (
         <button
-          onClick={() => dispatch({ type: "filter", f })}
+          onClick={() => dispatch({ type: "filter", filter: f })}
           key={f}
           className={`px-3 py-1 rounded-full text-sm ${filter === f ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
         >
