@@ -40,22 +40,22 @@ export const MultiStepForm = () => {
   const { currentStep, formData } = state;
 
   const handleNextStep = () => {
-    dispatch({ action: "next" });
+    dispatch({ type: "next" });
   };
 
   const handlePrevStep = () => {
-    dispatch({ action: "prev" });
+    dispatch({ type: "prev" });
   };
 
   const handleChange = (e) => {
     const name = e.target.name;
-    dispatch({ action: "change", [name]: e.target.value });
+    dispatch({ type: "change", [name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form is being submitted!");
-    dispatch({ action: "submit" });
+    dispatch({ type: "submit" });
   };
 
   if (currentStep === 1) {

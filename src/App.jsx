@@ -2,6 +2,7 @@ import React from "react";
 
 import Counter from "./playground/state/Counter";
 import MultiStepForm from "./playground/state/MultiStepForm";
+import TaskManager from "./playground/context/task-manager/TaskManager";
 import { MultiStepForm as ReducerForm } from "./playground/reducer/MultiStepForm";
 
 const playgrounds = {
@@ -11,6 +12,9 @@ const playgrounds = {
   },
   "Reducer Pattern": {
     "useReducer Multi-Step Form": ReducerForm,
+  },
+  "Context + Reducer": {
+    "Task Manager": TaskManager,
   },
 };
 
