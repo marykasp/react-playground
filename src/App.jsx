@@ -4,6 +4,7 @@ import Counter from "./playground/state/Counter";
 import MultiStepForm from "./playground/state/MultiStepForm";
 import TaskManager from "./playground/context/task-manager/TaskManager";
 import { MultiStepForm as ReducerForm } from "./playground/reducer/MultiStepForm";
+import HookDocApp from "./playground/custom-hooks/docs/HookDocApp";
 
 const playgrounds = {
   "State Hooks": {
@@ -15,6 +16,9 @@ const playgrounds = {
   },
   "Context + Reducer": {
     "Task Manager": TaskManager,
+  },
+  "Custom Hooks": {
+    "Hook Documentation": HookDocApp,
   },
 };
 
